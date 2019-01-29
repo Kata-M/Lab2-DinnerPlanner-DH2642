@@ -12,7 +12,7 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */ 
-var ExampleView = function (container, model) {
+var SidebarView = function (sidebarContainer, model) {
 	
 	/**
 	 * We use the @method find() on @var {jQuery object} container to look for various elements 
@@ -33,7 +33,7 @@ var ExampleView = function (container, model) {
 	 * in some other view gives the same ID to another element.
 	 * 
 	 */
-	var numberOfGuests = container.find("#numberOfGuests");
+	var numberOfGuests = sidebarContainer.find("#numberOfGuests");
 
 	/**
 	 * When we want references to some view elements to be available from outside of view, we 
@@ -45,8 +45,8 @@ var ExampleView = function (container, model) {
 	 * this button and do something with it (see Lab 2).
 	 * 
 	 */
-	this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
+	this.plusButton = sidebarContainer.find("#plusGuest");
+	this.minusButton = sidebarContainer.find("#minusGuest");
 	
 	/**
 	 * Here we use @var {jQuery object} numberOfGuests that is a reference to <span>
@@ -66,7 +66,7 @@ var ExampleView = function (container, model) {
 	Total Price 
 	*/
 
-	var totalPrice = container.find("#totalPrice");
+	var totalPrice = sidebarContainer.find("#totalPrice");
 	var total = model.getTotalMenuPrice();
 	//totalPrice.append($(total));
 	totalPrice.html("199");
@@ -86,53 +86,40 @@ var ExampleView = function (container, model) {
 
 
 	/**
-	 * Here we use @var {jQuery object} fetchIngredients that is a reference to <span>
+	 * Here we use @var {jQuery object} fetchDishes that is a reference to <span>
 	 * in our view to dynamically set it's value to "Hello World".
 	 */
-	var fetchIngredients = container.find("#fetchIngredients");	
-	//var fetchIngredients = document.getElementById('fetchIngredients');	
-	var ingredients = model.getAllIngredients();
-	console.log(ingredients);
+	var fetchDishes = sidebarContainer.find("#fetchDishes");	
+	//var fetchDishes = document.getElementById('fetchDishes');
 
-	fetchIngredients.append($("<table id='ingredientTable' class='table table-sm'></table>"));
-	var table = fetchIngredients.find("#ingredientTable");
+	var dishes = model.getReallyAllDishes();
+	console.log(dishes);
 
-	/*fetchIngredients.innerHTML += '<table class="table table-sm">'+
-										'<thead>'+
-											'<tr>'+
-												'<th>Quantity</th>'+
-												'<th>Ingredients</th>'+
-												'<th>Unit</th>'+
-												'<th>Cost</th>'+
-											'</tr>'+
-										'</thead>'+
-										'<tbody>'+*/
+	fetchDishes.append($("<table id='dishTable' class='table table-sm'></table>"));
+	var dishTable = fetchDishes.find("#dishTable");
+	
+	dishTable.append($("<tr id='totalGuests'></tr>"));
+	var totalGuestRow = dishTable.find("#totalGuests");
+	totalGuestRow.append($("<td style=' font-weight: bold '> dishes FOR "+numGuests+"</td>"));
 
+	var i = 0;	
+	var totalPrice = 0;
+	var dishCost = 0;
 
-	//ingredients.forEach(function(ingredient)
-	//{
-	/*	table.append($("<tr id='"+ingredient.name+"'></tr>"));
-		var row = table.find("#"+ingredient.name);
+	dishes.forEach(function(dish)
+	{
+		dishTable.append($("<tr id='"+i+"'></tr>"));
+		var row = dishTable.find("#"+i);
+		dishCost = model.getDishCost(dish);
 
-		//table.append("<td>"+ingredient.quantity+ingredient.unit+ "</td>");
-		//table.append("<td>"+ingredient.name+"</td>");
-		//table.append("<td>SEK</td>");
-		//table.append("<td>"+ingredient.price+"</td>");
-		row.append($("<td>"+ingredient.quantity+ingredient.unit+ "</td>"));
-		row.append($("<td>"+ingredient.name+"</td>"));
+		row.append($("<td>"+dish.name+"</td>"));
 		row.append($("<td>SEK</td>"));
-		row.append($("<td>"+ingredient.price+"</td>"));
-
-		/*fetchIngredients.innerHTML +=	'<tr>'+
-											'<td>'+ingredient.quantity+ingredient.unit+'</td>'+
-											'<td>'+ingredient.name+'</td>'+
-											'<td>SEK</td>'+
-											'<td>'+ingredient.price+'</td>'+
-										'</tr>'	*/
-
-	//});	
-
-
-	/*fetchIngredients.innerHTML += '</tbody>'+ '</table>'*/
+		row.append($("<td>"+dishCost+"</td>"));
+		totalPrice += dishCost;
+		i++;							
+	});	
+	dishTable.append($("<tr id='totalPrice'></tr>"));
+	var totalPriceRow = dishTable.find("#totalPrice");
+	totalPriceRow.append($("<td style=' font-weight: bold '> Total Price "+totalPrice+"</td>"));
 	
 }
