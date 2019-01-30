@@ -78,7 +78,7 @@ var DishSearchView = function (dishSearchContainer, model) {
 
 
 	/*
-	Search Types
+	 * Search Types
 	*/
 
 	var types = model.getAllTypes();

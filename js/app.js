@@ -13,7 +13,7 @@ $(function() {
 	var dishSearchContainer = $("#dishSearchView");
 
 	//dishItemView
-	var dishItemContainer = $("#dishItemView");
+	//var dishItemContainer = $("#dishItemView");
 
 	//dishOverviewView
 	var dishOverviewContainer = $("#dishOverviewView");
@@ -22,7 +22,7 @@ $(function() {
 	var dishDetailsContainer = $("#dishDetailsView");
 
 	//dishPrintoutView
-	//var dishPrintoutContainer = $("#dishPrintoutView");
+	var dishPrintoutContainer = $("#dishPrintoutView");
 	
 	//And create the instance of ExampleView
 	//var exampleView = new ExampleView(container,model);
@@ -40,13 +40,16 @@ $(function() {
 	//var dishItemView = new DishesItemView(dishItemContainer,model);
 
 	// And create the instance of dishDetailsView
-	//var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
+	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
 
 	// And create the instance of dishOverviewView
-	//var dishOverviewView = new DishOverviewView(dishOverviewContainer,model);
+	var dishOverviewView = new DishOverviewView(dishOverviewContainer,model);
 
 	// And create the instance of dishesPrintoutView
 	//var dishPrintoutView = new DishPrintoutView(dishPrintoutContainer,model);
+
+	// Instantiate the controller and pass it the view and model
+	var dishDetailsViewController = new DishDetailsViewController(dishDetailsView, model, this)
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
@@ -54,5 +57,97 @@ $(function() {
 	 * In other places you should limit the search only to the children 
 	 * of the specific view you're working with (see dishDetailsView.js).
 	 */
+
+
+	 /*
+	 * Show and hide views
+	 */
+
+	$(function() {
+
+		/*var generalController = new GeneralController();
+
+		var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
+
+		generalController.addView(dishDetailsView);
+		var dishDetailsViewController = new DishDetailsViewController(dishDetailsView, model, generalController)
+		
+		// ...
+	
+		generalController.addScreen('CONFIRM',[confirmView]);
+		*/
+		
+		// ...
+
+		var hideAllViews = function(){
+			$('#sidebarView').hide();
+			$('#dishSearchView').hide();
+			$('#dishDetailsView').hide();
+			$('#dishOverviewView').hide();
+			$('#dishPrintoutView').hide();
+			//...
+		}
+	
+		var hideViewsDishDetails = function(){
+			$('#welcomeView').hide();
+			$('#sidebarView').hide();
+			$('#dishSearchView').hide();
+			$('#dishOverviewView').hide();
+			$('#dishPrintoutView').hide();
+			//...
+		}
+	
+		this.showDishDetails = function(){
+			hideViewsDishDetails();
+			$('#dishDetailsView').show();
+		}
+
+		var hideViewsSelectDish = function(){
+			$('#welcomeView').hide();
+			$('#dishDetailsView').hide();
+			$('#dishOverviewView').hide();
+			$('#dishPrintoutView').hide();
+			//...
+		}
+
+		this.showSelectDish = function(){
+			hideViewsSelectDish();
+			$('#sidebarView').show();
+			$('#dishSearchView').show();
+			
+		}
+
+		var hideViewsDishOverview = function(){
+			$('#welcomeView').hide();
+			$('#sidebarView').hide();
+			$('#dishSearchView').hide();
+			$('#dishDetailsView').hide();
+			$('#dishPrintoutView').hide();
+			//...
+		}
+
+		this.showDishOverview = function(){
+			hideViewsDishOverview();
+			$('#dishOverviewView').show();
+			
+		}
+	
+	});
+
+	//dishDetailsView.confirmButton.click(function(){
+		//alert( "Handler for .click() called." );
+     //   this.showConfirmScreen();
+	//});
+	 
+	/*$('confirmButton').click(function(){
+			
+			$('#welcomeView').hide();
+			$('#sidebarView').hide();
+			$('#dishSearchView').hide();
+		
+			$('#dishDetailsView').show();
+
+		
+	});*/
 
 });
