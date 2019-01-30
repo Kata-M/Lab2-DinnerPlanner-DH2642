@@ -354,13 +354,16 @@ var DinnerModel = function() {
 		this._observers.push(observer);
 	}
 
-	this.notifyObservers = function(arg) 
+	this.notifyObservers = function(arg)
 	{
 		for(var i=0; i<this._observers.length; i++) 
 		{
 			this._observers[i].update(arg);
 		}	
 	}
+
+ 
+	  removeObserver(observer){  /* remove observer from array */}
 
 
 	// the dishes variable contains an array of all the 
