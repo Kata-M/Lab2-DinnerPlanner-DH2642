@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dinner planner</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <style>div{border:1px solid;text-align:center;}</style> 
+
+    	<script src="js/view/homeView.js"></script>
+  </head>
+
+
+  	<!-- Header DinnerPlanner always visible --> 
+ 	<div class="jumbotron" id="header">
+  		<div class="container">
+    		<h1> Dinner Planner </h1>
+ 	 	</div>
+	</div>
+
+	<div class="article" id="homeView" style="display:block">
+    <div class="container text-center">
+      <div class="lead text-muted" style="margin-top:30px; padding:100px">
+        <p id="introText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+        
+      </div>
+      <div  class="col-md-12 center-block" style="margin-top:30px">
+        <button class="btn center-block buttonclr" id="CreateDinner" onclick="getSelectDishView()">Create New Dinner</button>
+      </div>  
+    </div>
+  </div>  
+
+ 	<div class="article" id="dishView" style="display:none">
+  		<div class="container">
+    		<div class="col-xs-12 col-sm-4 col-md-4">
+    			<nav class="navbar navbar-default"> 
+    				<div class="container-fluid"> 
+    					<div class="navbar-header"> 
+    						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" aria-expanded="false"> 
+    							<span class="sr-only">Toggle navigation</span> 
+    							<span class="icon-bar"></span> 
+    							<span class="icon-bar"></span> 
+    							<span class="icon-bar"></span> 
+    						</button> 
+    						<a href="#" class="navbar-brand">My Dinner</a> 
+    					</div> 
+    					<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-3" aria-expanded="false" style="height: 1px;"> 
+    					
+    						<table class="table" id="guests">
+   									<thead> 
+   										<tr> 	
+   											<th>People</th> 
+   											<th align="left"> <span id="numberOfGuests"> </span> </th> 
+   										</tr> 
+   									</thead>
+   							</table>
+    						  <!-- Table -->
+    						  <!--<span id="fetchDishes"> </span>-->
+  								<table class="table" id="menuItems">
+   									<thead> 
+   										<tr> 	
+   											<th>Dish Name</th> 
+   											<th align="left">Cost</th> 
+   										</tr> 
+   									</thead>
+   									<tbody> 
+   										<tr> 
+   											<th scope="row" id="1dish">Ice Cream</th> 
+   											<td id="1price"><span id="1dish_price"> 35kr </span></td> 
+   										</tr> 
+   										<tr> 
+   											<th scope="row" id="2dish">Pizza</th> 
+   											<td d="2price"><span id="1dish_price"> 50kr </span></td> 
+   										</tr> 
+   										<tr> 
+   											<th scope="row" id="2dish"></th> 
+   											<td d="total_price">TOTAL COST: <span id="1dish_price"> 95kr </span></td> 
+   										</tr> 
+   										
+   									</tbody>
+  								</table>
+  	
+    				
+    						<button type="button" class="btn btn-default navbar-btn" id="confirmDinner" onclick="confirmDinner()">Confirm Dinner</button> 
+    					</div> 
+    				</div> 
+    			</nav>
+    		</div>
+
+    		<div class="col-xs-12 col-sm-8 col-md-8">
+    			<div class="row">
+    				<h4 align="left">FIND A DISH</h4>
+	    		</div>
+	    		<div class="row">
+    				<form ALIGN=LEFT class="example" action="action_page.php">
+                    	<input type="text" placeholder="Enter key words" name="search">
+                     		<select id = "dishTypes">
+                              	<option value = "All">All</option>
+                              	<option value = "Main Course" id="type0">Main Course </option>
+                              	<option value = "Side Dish" id="type1">Side Dish</option>
+                                <option value = "Dessert" id="type2">Dessert</option>
+                                <option value = "Appetizer" id="type3">...</option>
+                                <option value = "Appetizer" id="type4">...</option>
+                                <option value = "Appetizer" id="type5">...</option>
+                          	</select>
+                   		 <button class="button" type="submit"> Search </button>   
+            		</form>        
+            		<br />
+
+    			</div>
+    			<div class="row">
+	    			<div class="thumbnail" id="picture1"> 
+	                    <img alt="100%x200" src="images/sourdough.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;"> 
+
+	                    	<div class="caption"> 
+	                        	<h3>Sour Dough</h3> 
+	                    	</div>
+	                    </div>
+	                </div>  
+	            </div>      
+    		</div>
+ 	 	</div>
+
+
+
+ 	<div class="article" id="dishDetailView" style="display:none">
+ 		<div class="col-xs-12 col-sm-8 col-md-8">
+ 			<!-- Center -->
+					<div class="col-sm-5 col-style"
+							<h2 style="text-align: left">FRENCH TOAST</h2>
+							<br/>
+							<img src="images\toast.jpg" alt="food" style="width:50%; margin-bottom:20px">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							<button class="btn center-block buttonclr">Back to search</button>
+							<br/>
+					</div>
+					<!-- Right ingredients table -->
+					<div class="col-sm-5 col-style" style="background-color: #FFE59A;">
+							<div>	
+								<span id="fetchIngredients"></span>
+							</div>
+							<div>
+									<button class="btn center-block buttonclr">Add to Menu</button>
+							</div>	
+					</div>
+					<br/>
+							<h2 style="text-align: left">PREPARATION</h2>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+		</div>
+ 	</div>
+
+ 	<div class="article" id="dishOverviewView2" style="display:none">
+			<div class="container">
+								<div class="row">
+									<div class="col-sm-9">
+										<h2>Dinner for people :</h2><h2 id="numberOfGuests"></h2>
+										<!--<span id="numberOfGuests"></span>-->
+									</div>
+									<div class="col-sm-3" style="margin-top:20px">
+										<button class="btn buttonclr">Go back and edit dinner</button>
+								    </div>	
+								</div>	
+			</div>
+							<!-- Display all dishes in menu -->
+			<div id="dishOverviewView">
+					<div id="showAllDishes" style="padding:30px"></div>
+			</div>	
+	
+			<div  class="col-md-12 center-block" style="margin:30px">
+					<button class="btn center-block buttonclr" onclick="printDinner()">Print Full Recipe</button>
+			</div>
+			
+    </div>
+ 	
+ 	<div class="article" id="dishPrintoutView" style="display:none">
+
+<div class="row" style="height:100px">
+
+      <div class="col-sm-10">
+        <h3 ALIGN=LEFT> &nbsp;&nbsp;&nbsp;&nbsp; My Dinner: 3 People  </h3>
+      </div>
+
+      <div class="col-sm-2" style="text-align:left">
+        <button class="button" type="submit" style="margin-top:20px"> Go back and edit dinner </button>
+      </div>  
+
+  </div>
+  <hr>
+
+  <div class="row">
+  <div class="col-sm-3" style="margin-left: 20px">
+
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                                <img src="images/meatballs.jpg" >
+                          </div>
+                          <div class="panel-footer">
+                              <h4> Meat Balls </h4>
+                          </div>
+                      </div>
+
+
+  </div>
+  <div class="col-sm-3">
+  <h1>  MEAT BALLS </h1>
+  <p> Style too own civil out along. Perfectly offending attempted add arranging age gentleman concluded. Get who uncommonly our expression ten increasing considered occasional travelling. Ever read tell year give may men call its. Piqued son turned fat income played end wicket. To do noisy downs round an happy books. 
+  </p>
+
+
+  </div>
+  <div class="col-sm-5">
+  <h4>  PREPARATION </h4>
+    <p> Style too own civil out along. Perfectly offending attempted add arranging age gentleman concluded. Get who uncommonly our expression ten increasing considered occasional travelling. Ever read tell year give may men call its. Piqued son turned fat income played end wicket. To do noisy downs round an happy books. 
+
+    Believing neglected so so allowance existence departure in. In design active temper be uneasy. Thirty for remove plenty regard you summer though. He preference connection astonished on of ye. Partiality on or continuing in particular principles as. Do believing oh disposing to supported allowance we. 
+
+  Breakfast agreeable incommode departure it an. By ignorant at on wondered relation. Enough at tastes really so cousin am of. Extensive therefore supported by extremity of contented. Is pursuit compact demesne invited elderly be. View him she roof tell her case has sigh. Moreover is possible he admitted sociable concerns. By in cold no less been sent hard hill.
+  </p>
+
+  </div>
+
+<div class="row">
+  <div class="col-sm-3" style="margin-left: 20px">
+
+                      <div class="panel panel-default">
+                          <div class="panel-body">
+                                <img src="images/toast.jpg" >
+                          </div>
+                          <div class="panel-footer">
+                              <h4> Toast </h4>
+                          </div>
+                      </div>
+
+
+  </div>
+  <div class="col-sm-3">
+  <h1>  TOAST </h1>
+  <p> Style too own civil out along. Perfectly offending attempted add arranging age gentleman concluded. Get who uncommonly our expression ten increasing considered occasional travelling. Ever read tell year give may men call its. Piqued son turned fat income played end wicket. To do noisy downs round an happy books. 
+  </p>
+
+
+  </div>
+  <div class="col-sm-5">
+  <h4>  PREPARATION </h4>
+    <p> Style too own civil out along. Perfectly offending attempted add arranging age gentleman concluded. Get who uncommonly our expression ten increasing considered occasional travelling. Ever read tell year give may men call its. Piqued son turned fat income played end wicket. To do noisy downs round an happy books. 
+
+    Believing neglected so so allowance existence departure in. In design active temper be uneasy. Thirty for remove plenty regard you summer though. He preference connection astonished on of ye. Partiality on or continuing in particular principles as. Do believing oh disposing to supported allowance we. 
+
+  Breakfast agreeable incommode departure it an. By ignorant at on wondered relation. Enough at tastes really so cousin am of. Extensive therefore supported by extremity of contented. Is pursuit compact demesne invited elderly be. View him she roof tell her case has sigh. Moreover is possible he admitted sociable concerns. By in cold no less been sent hard hill.
+  </p>
+
+  </div>
+
+
+
+
+<!-- 							 -->
+						<span id="total_price"> </span>
+    					
+    					<span id="fetchDishes"> </span>
+    </div>
+
+      <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
+
+  <script src="js/view/homeView.js"></script>
+  <script src="js/view/sidebarView.js"></script>
+  <script src="js/view/confirmView.js"></script>
+  <script src="js/view/dishView.js"></script>
+
+
+
+	<!-- TODO: Here you should include JS code for your other views -->
+  </body>
+</html>

@@ -5,15 +5,29 @@ var DinnerModel = function() {
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	var numberOfGuests = 2; //type int
+	var numberOfGuests = 5; //type int
 	var menu = []; //type array/queue
 	var allTypes = [];
+
+	//OBSERVER STUFF ----->
+	//FUNCTION NOTIFY
+	var observers=[];
+    this.addObserver=function(observer){ observers.push(observer); }
+   
+    this.notifyObservers=function(){ 
+        for(var i=0; i<observers.length; i++)
+             observers[i](this); // we assume that observers[i] is a function, so we call it like observers[i](parameters)
+    }
+
+    this.removeObserver=function(observer){  /* remove observer from array */}
+	//OBSERVER STUFF <-----
+
 
 	this.setNumberOfGuests = function(num) {
 		//DONE Lab 1
 		console.log("set number of guests to: ", num);
 		numberOfGuests = num;
-		
+		this.notifyObservers();
 	}
 	
 	this.getNumberOfGuests = function() {

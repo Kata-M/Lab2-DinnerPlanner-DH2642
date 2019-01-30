@@ -2,9 +2,36 @@ $(function() {
 	//We instantiate our model
 	var model = new DinnerModel();
 	//var container = $("#exampleView");
-
-	//welcomeView
 	var welcomeContainer = $("#welcomeView");
+	var welcomeView = new WelcomeView(welcomeContainer,model);
+	var welcomeViewController = new WelcomeViewController(welcomeView,model,this);
+
+	var sidebarContainer = $("#sidebarView");
+	var sidebarView = new SidebarView(sidebarContainer,model);
+	var sidebarViewController = new SidebarViewController(sidebarView,model,this);
+
+	var hideAllViews = function(){
+		$("#welcomeView").hide();
+		$("#sidebarView").hide();
+		$("#dishSearchView").hide();
+		$("#dishOverviewView").hide();
+	}
+	
+	this.showSelectDishScreen = function(){
+		hideAllViews();
+  		$("#sidebarView").show();
+  		$("#dishSearchView").show();
+  	}
+
+  	this.showdishOverviewView = function(){
+  		hideAllViews();
+  		$("#dishOverviewView").show();
+  	}
+
+
+});
+	//welcomeView
+	/*var welcomeContainer = $("#welcomeView");
 
 	//sidebarView
 	var sidebarContainer = $("#sidebarView");
@@ -50,7 +77,7 @@ $(function() {
 
 	// Instantiate the controller and pass it the view and model
 	var dishDetailsViewController = new DishDetailsViewController(dishDetailsView, model, this)
-
+	*/
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
 	 * use the $('someSelector') to search for elements in the whole HTML.
@@ -63,7 +90,7 @@ $(function() {
 	 * Show and hide views
 	 */
 
-	$(function() {
+	//$(function() {
 
 		/*var generalController = new GeneralController();
 
@@ -78,7 +105,7 @@ $(function() {
 		*/
 		
 		// ...
-
+		/*
 		var hideAllViews = function(){
 			$('#sidebarView').hide();
 			$('#dishSearchView').hide();
@@ -133,6 +160,7 @@ $(function() {
 		}
 	
 	});
+	*/
 
 	//dishDetailsView.confirmButton.click(function(){
 		//alert( "Handler for .click() called." );
@@ -150,4 +178,3 @@ $(function() {
 		
 	});*/
 
-});
