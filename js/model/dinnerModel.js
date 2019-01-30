@@ -362,8 +362,6 @@ var DinnerModel = function() {
 		}	
 	}
 
- 
-	  removeObserver(observer){  /* remove observer from array */}
 
 
 	// the dishes variable contains an array of all the 
