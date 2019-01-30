@@ -149,86 +149,76 @@
     </div>
 
     <!-- Select Dish -->
-     <div id="sidebarView" style="display:none">   
-          <div class="col-xs-12 col-sm-4 col-md-4">
-        
-          <nav class="navbar navbar-default"> 
-              <div class="container-fluid"> 
-                  <div class="navbar-header"> 
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="true"> 
-                          <span class="sr-only">Toggle navigation</span> 
-                          <span class="icon-bar"></span> 
-                          <span class="icon-bar"></span> 
-                          <span class="icon-bar"></span> 
-                          </button> <a href="#" class="navbar-brand">My Dinner</a>        
-                  </div> 
-                  <div class="row">       
-                  </div>
+    <div id="sidebarView" style="display:none">   
+            <div class="col-xs-12 col-sm-4 col-md-4"> 
+            
+                  <nav class="navbar navbar-default"> 
+                        <div class="container-fluid"> 
+                              <div class="navbar-header"> 
+                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" aria-expanded="true"> 
+                                    <span class="sr-only">Toggle navigation</span> 
+                                    <span class="icon-bar"></span> 
+                                    <span class="icon-bar"></span> 
+                                    <span class="icon-bar"></span> 
+                                    </button> <a href="#" class="navbar-brand">My Dinner</a>        
+                              </div> 
+                              <div class="row"> </div>
 
-                  <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-2" aria-expanded="true" style=""> 
-                      <form class="navbar-form navbar-center"> 
+                              <div class="navbar-collapse collapse in" id="bs-example-navbar-collapse-2" aria-expanded="true"> 
+                                    <form class="navbar-form navbar-center"> 
 
-           <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                    
-                        People :  <span id="numberOfGuests"></span>
-                        
-                  </div>
-              </div>  
-        
-         <!-- test -->
-                 <div class="col-xs-6 col-sm-6 col-md-6">
-                    <!-- empty shelf -->
-                    <br />
-                  </div>  
-        
-              <!--</div>-->
-                  
-              <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6" style="background-color: lightgray">
-                        
-                        <p align="center"> Dish Name </p>
-                    </div>
-                    <div class="col-xs-6 col-sm-6 col-md-6" style="background-color: lightgray">
-                        <p align="left"> Cost </p>
-                    </div>
-              </div>
-        
-              <div class="row">
-                    <div class="col-xs-6 col-sm-6 col-md-6">
-                    
-                    </div>
-                    <div class="col-xs-2 col-sm-2 col-md-2">
-                        <p align="left" style="color: maroon"> SEK </p>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4">
-                         <!-- x <span id="totalPrice"> </span> -->
-                         <p style="color: maroon" id="total_price"> totalPrice </p>
-                       <!-- <textarea class="terms" readonly="readonly" id="total_price"> </textarea> -->
-        
-                       
-                    </div>
-              </div>
-        
-              <div class="row">
-                    <br />
-                    <button type="submit" class="btn btn-default" style="background: lightgray">Confirm Dinner</button> 
-                    <br />
-                   
-              </div>
-        
-        
-                  <!-- test -->
-                    </div> 
-                          <!--</div> -->
-                          
-                      </form> 
-                  </div> 
+                                          <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                      
+                                                      People :  <span id="numberOfGuests"></span>
+                                                            
+                                                </div>
+                                          </div>  
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <!-- empty shelf -->
+                                                <br />
+                                          </div>  
+                                          
+                                          <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6" style="background-color: lightgray">
+                                                      
+                                                      <p align="center"> Dish Name </p>
+                                                </div>
+                                                <div class="col-xs-6 col-sm-6 col-md-6" style="background-color: lightgray">
+                                                      <p align="left"> Cost </p>
+                                                </div>
+                                          </div>
+                              
+                                          <div class="row">
+                                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                                
+                                                </div>
+                                                <div class="col-xs-2 col-sm-2 col-md-2">
+                                                      <p align="left" style="color: maroon"> SEK </p>
+                                                </div>
+                                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                                      <!-- x <span id="totalPrice"> </span> -->
+                                                      <p style="color: maroon" id="total_price"> totalPrice </p>
+                                                <!-- <textarea class="terms" readonly="readonly" id="total_price"> </textarea> -->
+                                                </div>
+                                          </div>
+                              
+                                          <div class="row">
+                                                <br />
+                                                <button type="submit" class="btn btn-default" style="background: lightgray">Confirm Dinner</button> 
+                                                <br />    
+                                          </div>
+
+                                    </form> 
+                              
+                              </div> 
                         </div>
-              </div> 
-          </nav>
+                  </nav>   
+            </div>
+      </div> 
+
         
-          <div id ="dishSearchView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">
+      <div id ="dishSearchView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">
         
             <h3 align="left"> FIND A DISH </h3>
             <br />
@@ -236,24 +226,27 @@
               
                     <form ALIGN=LEFT class="example" action="action_page.php">
                             <input type="text" placeholder="Enter key words" name="search">
-        
-                             <select id = "myList">
-                                      <option value = "All">All</option>
-                                      <option value = "Main Course" id="type0">Main Course </option>
-                                      <option value = "Side Dish" id="type1">Side Dish</option>
-                                        <option value = "Dessert" id="type2">Dessert</option>
-                                        <option value = "Appetizer" id="type3">...</option>
-                                        <option value = "Appetizer" id="type4">...</option>
-                                        <option value = "Appetizer" id="type5">...</option>
-                                  </select>
+                             <select id = "selectType">
+                                    <!-- <option value = "All">All</option>
+                                    <option value = "Main Course" id="type0">Main Course </option>
+                                    <option value = "Side Dish" id="type1">Side Dish</option>
+                                    <option value = "Dessert" id="type2">Dessert</option>
+                                    <option value = "Appetizer" id="type3">...</option>
+                                    <option value = "Appetizer" id="type4">...</option>
+                                    <option value = "Appetizer" id="type5">...</option> -->
+                              </select>
                  
-                            <button id="selectItem" class="button" type="submit"> Search </button>                            
+                              <button id="searchType" class="button" type="submit"> Search </button>                            
                     </form>        
                     <br />
                     <hr>
               </div>
-        
+
               <div class="row">
+                  <div id="showDishes" style="padding:30px"></div>
+              </div>            
+        
+              <!-- <div class="row">
                     <div class="col-xs-12 col-sm-3 col-md-3">
                           <div class="thumbnail"> 
                                   <img alt="100%x200" src="images/meatballs.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;"> 
@@ -303,10 +296,8 @@
                                   </div> 
                           </div>
                     </div>
-                </div> 
-          </div>
-
-    </div>    
+                </div>  -->
+      </div>   
       
 
     <!-- dish details -->
@@ -314,8 +305,34 @@
     <div id="dishDetailsView" class="container-float" style="display:none">
 		<div class="row">
 				<div class="row">
-					<!-- Left Panel -->
-					<div class="col-sm-2 col-style" style="text-align:center;">
+                              <!-- Left Panel -->
+
+                              <div class="col-sm-2 col-style" style="text-align:center;">
+                               
+                                          <nav class="navbar navbar-expand-lg navbar-light mt-5" style="margin:-20px">
+                                                      <a class="navbar-brand" href="#">My Dinner</a>
+                                                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+                                                            <span class="navbar-toggler-icon"></span>
+                                                      </button>
+                                                      <div class="navbar-collapse flex-grow-0 ml-auto collapse show" id="navbarSupportedContent" style="">
+                                                                  <ul class="navbar-nav text-right">
+                                                                        <li class="nav-item active">
+                                                                        <a class="nav-link" href="#">portfolio 
+                                                                              <span class="sr-only">(current)</span>
+                                                                        </a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                              <a class="nav-link" href="#">about</a>
+                                                                        </li>
+                                                                        <li class="nav-item">
+                                                                              <a class="nav-link disabled" href="#">contact</a>
+                                                                        </li>
+                                                                  </ul>
+                                                            </div>
+                                                </nav>     
+
+
+
 							My Dinner
 							<div>
 								Number of guests: <span id="numberOfGuests"></span>
@@ -404,7 +421,7 @@
                 </div>	
             </div>
             <div  class="col-md-12 center-block" style="margin:30px">
-                    <button class="btn center-block buttonclr">Print Full Recipe</button>
+                    <button id="printRecipe" class="btn center-block buttonclr">Print Full Recipe</button>
             </div> 
      </div>         
 
@@ -579,7 +596,10 @@
       <script src="js/view/dishSearchView.js"></script>
       <script src="js/view/dishDetailsView.js"></script>
       <script src="js/view/dishOverviewView.js"></script>
-      <script src="js/controller/dishDetailsViewController.js"></script>
+      <script src="js/controller/welcomeController.js"></script>
+      <script src="js/controller/dishSearchController.js"></script>
+      <script src="js/controller/dishDetailsController.js"></script>
+      <script src="js/controller/dishOverviewController.js"></script>
       
 	<!-- TODO: Here you should include JS code for your other views -->
   </body>

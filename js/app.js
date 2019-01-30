@@ -49,7 +49,16 @@ $(function() {
 	//var dishPrintoutView = new DishPrintoutView(dishPrintoutContainer,model);
 
 	// Instantiate the controller and pass it the view and model
-	var dishDetailsViewController = new DishDetailsViewController(dishDetailsView, model, this)
+	var welcomeController = new WelcomeController($("#welcomeView"), model, this);
+
+	// Instantiate the controller and pass it the view and model
+	var dishSearchController = new DishSearchController(dishSearchView, model, this);
+
+	// Instantiate the controller and pass it the view and model
+	var dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+
+	// Instantiate the controller and pass it the view and model
+	var dishOverviewController = new DishOverviewController(dishOverviewView, model, this);
 
 	/**
 	 * IMPORTANT: app.js is the only place where you are allowed to
@@ -79,15 +88,24 @@ $(function() {
 		
 		// ...
 
-		var hideAllViews = function(){
-			$('#sidebarView').hide();
-			$('#dishSearchView').hide();
+		
+		//show select dish
+		var hideViewsSelectDish = function(){
+			$('#welcomeView').hide();
 			$('#dishDetailsView').hide();
 			$('#dishOverviewView').hide();
 			$('#dishPrintoutView').hide();
 			//...
 		}
-	
+
+		this.showSelectDish = function(){
+			hideViewsSelectDish();
+			$('#sidebarView').show();
+			$('#dishSearchView').show();
+			
+		}				
+		
+		//show dish details
 		var hideViewsDishDetails = function(){
 			$('#welcomeView').hide();
 			$('#sidebarView').hide();
@@ -102,21 +120,7 @@ $(function() {
 			$('#dishDetailsView').show();
 		}
 
-		var hideViewsSelectDish = function(){
-			$('#welcomeView').hide();
-			$('#dishDetailsView').hide();
-			$('#dishOverviewView').hide();
-			$('#dishPrintoutView').hide();
-			//...
-		}
-
-		this.showSelectDish = function(){
-			hideViewsSelectDish();
-			$('#sidebarView').show();
-			$('#dishSearchView').show();
-			
-		}
-
+		//show dish overview
 		var hideViewsDishOverview = function(){
 			$('#welcomeView').hide();
 			$('#sidebarView').hide();
@@ -129,6 +133,22 @@ $(function() {
 		this.showDishOverview = function(){
 			hideViewsDishOverview();
 			$('#dishOverviewView').show();
+			
+		}
+
+		//show dish print out
+		var hideViewsDishPrintout = function(){
+			$('#welcomeView').hide();
+			$('#sidebarView').hide();
+			$('#dishSearchView').hide();
+			$('#dishDetailsView').hide();
+			$('#dishOverviewView').hide();
+			//...
+		}
+
+		this.showDishPrintout = function(){
+			hideViewsDishPrintout();
+			$('#dishPrintoutView').show();
 			
 		}
 	

@@ -26,6 +26,9 @@ var DishDetailsView = function (dishDetailsContainer, model) {
 	var fetchIngredients = dishDetailsContainer.find("#fetchIngredients");	
 	//var fetchIngredients = document.getElementById('fetchIngredients');
 
+	this.addToMenu = dishDetailsContainer.find("#addToMenu");
+	this.btnNumber = dishDetailsContainer.find("#btn-number");
+
 	var ingredients = model.getIngredientsforDish(1);
 	console.log(ingredients);
 

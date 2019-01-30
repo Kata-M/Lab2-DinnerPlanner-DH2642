@@ -9,10 +9,13 @@ var DinnerModel = function() {
 	var menu = []; //type array/queue
 	var allTypes = [];
 
+
+
 	this.setNumberOfGuests = function(num) {
 		//DONE Lab 1
 		console.log("set number of guests to: ", num);
 		numberOfGuests = num;
+		this.notifyObservers();
 		
 	}
 	
@@ -180,6 +183,7 @@ var DinnerModel = function() {
 					menu[counter] = this.getDish(id);
 			}
 		}
+		this.notifyObservers();
 	}
 
 	this.addDishToMenu2 = function(dishId) {
@@ -281,6 +285,7 @@ var DinnerModel = function() {
 				}
 
 		}
+		this.notifyObservers();
 	}
 
 
@@ -339,6 +344,22 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
+	}
+
+	//Observer implementation
+	this._observers = [];
+
+	this.addObserver = function(observer) 
+	{
+		this._observers.push(observer);
+	}
+
+	this.notifyObservers = function(arg) 
+	{
+		for(var i=0; i<this._observers.length; i++) 
+		{
+			this._observers[i].update(arg);
+		}	
 	}
 
 
