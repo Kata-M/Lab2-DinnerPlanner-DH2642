@@ -211,32 +211,35 @@
 
 
         
-          <div id ="dishSearchView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">
+          <div id ="findDishView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">
         
             <h3 align="left"> FIND A DISH </h3>
             <br />
                <div class="row">
               
-                    <form ALIGN=LEFT class="example" action="action_page.php">
+                   <!-- <form ALIGN=LEFT class="example" action="home-all.html"> -->
+                    <form ALIGN=LEFT class="example" action="app.showFindDishView"> 
                             <input type="text" placeholder="Enter key words" name="search">
         
-                             <select id = "myList">
-                                      <option value = "All">All</option>
+                             <select id = "selectType">
+                                     <!-- <option value = "All">All</option>
                                       <option value = "Main Course" id="type0">Main Course </option>
                                       <option value = "Side Dish" id="type1">Side Dish</option>
                                         <option value = "Dessert" id="type2">Dessert</option>
                                         <option value = "Appetizer" id="type3">...</option>
                                         <option value = "Appetizer" id="type4">...</option>
                                         <option value = "Appetizer" id="type5">...</option>
+                                        -->
                                   </select>
                  
-                            <button id="selectItem" class="button" type="submit"> Search </button>                            
+                            <button id="search" class="button" type="submit"> Search </button>                            
                     </form>        
                     <br />
                     <hr>
               </div>
         
-              <div class="row">
+              <div class="row" id="filtered">
+                    <!--
                     <div class="col-xs-12 col-sm-3 col-md-3">
                           <div class="thumbnail"> 
                                   <img alt="100%x200" src="images/meatballs.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;"> 
@@ -286,6 +289,7 @@
                                   </div> 
                           </div>
                     </div>
+                    -->
                 </div> 
           </div>
 
@@ -561,7 +565,10 @@
       <script src="js/controller/welcomeViewController.js"></script>
       <script src="js/view/sidebarView.js"></script>
       <script src="js/controller/sidebarViewController.js"></script>
-      <script src="js/view/dishSearchView.js"></script>
+      <script src="js/view/findDishView.js"></script>
+      <script src="js/controller/findDishViewController.js"></script>
+
+     
       <script src="js/view/dishDetailsView.js"></script>
       <script src="js/view/dishOverviewView.js"></script>
       <script src="js/controller/dishDetailsViewController.js"></script>

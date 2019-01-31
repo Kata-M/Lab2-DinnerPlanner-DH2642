@@ -10,22 +10,38 @@ $(function() {
 	var sidebarView = new SidebarView(sidebarContainer,model);
 	var sidebarViewController = new SidebarViewController(sidebarView,model,this);
 
+	var findDishContainer = $("#findDishView");
+	var findDishView = new FindDishView(findDishContainer,model);
+	var findDishViewController = new FindDishViewController(findDishView,model,this);
+
+	var dishDetailsContainer = $("#dishDetailsView");
+	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
+	var dishDetailsViewController = new DishDetailsViewController(dishDetailsContainer,model,this);
+
+
 	var hideAllViews = function(){
 		$("#welcomeView").hide();
 		$("#sidebarView").hide();
 		$("#dishSearchView").hide();
 		$("#dishOverviewView").hide();
+		$("#findDishView").hide();
 	}
 	
 	this.showSelectDishScreen = function(){
 		hideAllViews();
   		$("#sidebarView").show();
-  		$("#dishSearchView").show();
+  		$("#findDishView").show();
   	}
 
   	this.showdishOverviewView = function(){
   		hideAllViews();
   		$("#dishOverviewView").show();
+  	}
+
+  	this.showDishDetails = function(){
+  		hideAllViews();
+  		$("#dishDetailsView").show();
+
   	}
 
 
