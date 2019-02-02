@@ -17,14 +17,23 @@ var SidebarView = function(sidebarContainer,model){
   	var populateMenuView = function(){
 		 	var allMenu = model.getFullMenu();
 			
-			/*document.getElementById("menu").innerHTML = '<div class="container">' +
+            /*
+            document.getElementById("menu").innerHTML = '<tr id="menuItem'+"test"+'">'+
+					'<th scope="row" id="1dish">'+"test"+'</th>' +
+					'<td id="1price"><span id="1dish_price">'+ "test" + ' kr </span></td>' +
+				'</tr>'
+			*/
+			document.getElementById("menu").innerHTML = 
 			'<thead>'+ 
- 					'<tr>'+  
-                        '<th>Dish Name</th>'+ 
-                        '<th align="left">Cost</th>'+ 
-                      '</tr>'+ 
-            '</thead>'+
-            '<tbody id="menuBody">'  */
+                      '<tr>' +  
+                        '<th>Dish Name</th>' + 
+                        '<th align="left">Cost</th>' + 
+                      '</tr>' + 
+            '</thead>' +
+            '<tbody>'
+
+
+
 			allMenu.forEach(function(menuItem){
 
 				var menuItemName = menuItem.name;
@@ -36,18 +45,20 @@ var SidebarView = function(sidebarContainer,model){
 				document.getElementById("menu").innerHTML += 
 				'<tr id="menuItem'+menuItemName+'">'+
 					'<th scope="row" id="1dish">'+menuItemName+'</th>' +
-					'<td id="1price"><span id="1dish_price">'+ menuItemCost + 'kr </span></td>' +
+					'<td id="1price"><span id="1dish_price">'+ menuItemCost + ' kr </span></td>' +
 				'</tr>'
 			});
-			//document.getElementById("menu").innerHTML += '</tbody>'+'</div>'
+			
 
-				totalCost = model.getTotalMenuPrice();
-				
-				document.getElementById("menu").innerHTML += 
-				'<tr id="menuCost">'+
-					'<th scope="row" id="1dish">'+"TOTAL COST"+'</th>' +
-					'<td id="1price"><span id="1dish_price">'+ totalCost + ' kr </span></td>' +
-				'</tr>'
+			totalCost = model.getTotalMenuPrice();
+			
+			document.getElementById("menu").innerHTML += 
+			'<tr id="menuCost">'+
+				'<th scope="row" id="1dish">'+"TOTAL COST"+'</th>' +
+				'<td id="1price"><span id="1dish_price">'+ totalCost + ' kr </span></td>' +
+			'</tr>'
+
+			document.getElementById("menu").innerHTML += '</tbody>'
 	}
   	//-----
   	populateMenuView();

@@ -38,6 +38,28 @@ var DinnerModel = function() {
 			'unit':'slices',
 			'price':2
 			}]
+		},{
+		'id':3,
+		'name':'Baked Brie with Peaches',
+		'type':'starter',
+		'image':'bakedbrie.jpg',
+		'description':"Here is how you make it... Lore ipsum...",
+		'ingredients':[{ 
+			'name':'round Brie cheese',
+			'quantity':10,
+			'unit':'g',
+			'price':8
+			},{
+			'name':'raspberry preserves',
+			'quantity':15,
+			'unit':'g',
+			'price':10
+			},{
+			'name':'peaches',
+			'quantity':1,
+			'unit':'',
+			'price':4
+			}]
 		}]; //type array/queue
 
 	var allTypes = [];
