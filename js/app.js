@@ -18,6 +18,10 @@ $(function() {
 	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
 	var dishDetailsViewController = new DishDetailsViewController(dishDetailsContainer,model,this);
 
+	var dishOverviewViewContainer = $("#dishOverviewView");
+	var dishOverviewView = new DishOverviewView(dishOverviewViewContainer,model);
+	var dishOverviewViewController = new DishOverviewViewController(dishOverviewViewContainer,model,this);
+
 
 	var hideAllViews = function(){
 		$("#welcomeView").hide();

@@ -377,11 +377,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-9">
-							<h2>Dinner for people :</h2><h2 id="numberOfGuests"></h2>
+							<h2>My Dinner: <span id="people"></span>  people</h2>
 							<!--<span id="numberOfGuests"></span>-->
 						</div>
 						<div class="col-sm-3" style="margin-top:20px">
-							<button class="btn buttonclr">Go back and edit dinner</button>
+							<button class="btn buttonclr" id="editDinner">Go back and edit dinner</button>
 					    </div>	
 					</div>	
 				</div>
@@ -391,7 +391,7 @@
                 </div>	
             </div>
             <div  class="col-md-12 center-block" style="margin:30px">
-                    <button class="btn center-block buttonclr">Print Full Recipe</button>
+                    <button class="btn center-block buttonclr" id="printRecipe">Print Full Recipe</button>
             </div> 
      </div>         
 
@@ -567,6 +567,8 @@
       <script src="js/controller/sidebarViewController.js"></script>
       <script src="js/view/findDishView.js"></script>
       <script src="js/controller/findDishViewController.js"></script>
+      <script src="js/view/dishOverviewView.js"></script>
+      <script src="js/controller/dishOverviewViewController.js"></script>
 
      
       <script src="js/view/dishDetailsView.js"></script>
