@@ -9,11 +9,59 @@ var SidebarView = function(sidebarContainer,model){
 	var numGuests = model.getNumberOfGuests();
   	document.getElementById("guests").innerHTML = numGuests; 
 
+  	var totalCost = model.getTotalMenuPrice();
+  	//document.getElementById("total_cost").innerHTML = totalCost;
+
+  	
+  	//-----
+  	var populateMenuView = function(){
+		 	var allMenu = model.getFullMenu();
+			
+			/*document.getElementById("menu").innerHTML = '<div class="container">' +
+			'<thead>'+ 
+ 					'<tr>'+  
+                        '<th>Dish Name</th>'+ 
+                        '<th align="left">Cost</th>'+ 
+                      '</tr>'+ 
+            '</thead>'+
+            '<tbody id="menuBody">'  */
+			allMenu.forEach(function(menuItem){
+
+				var menuItemName = menuItem.name;
+				console.log("menuItemName", menuItemName);
+				var menuItemCost = model.getDishCost(menuItem)*model.getNumberOfGuests();
+				
+
+				
+				document.getElementById("menu").innerHTML += 
+				'<tr id="menuItem'+menuItemName+'">'+
+					'<th scope="row" id="1dish">'+menuItemName+'</th>' +
+					'<td id="1price"><span id="1dish_price">'+ menuItemCost + 'kr </span></td>' +
+				'</tr>'
+			});
+			//document.getElementById("menu").innerHTML += '</tbody>'+'</div>'
+
+				totalCost = model.getTotalMenuPrice();
+				
+				document.getElementById("menu").innerHTML += 
+				'<tr id="menuCost">'+
+					'<th scope="row" id="1dish">'+"TOTAL COST"+'</th>' +
+					'<td id="1price"><span id="1dish_price">'+ totalCost + ' kr </span></td>' +
+				'</tr>'
+	}
+  	//-----
+  	populateMenuView();
+
   	this.update=function(model){
 	    // redraw just the portion affected by the changeDetails
 	    // or remove all graphics in the view, read the whole model and redraw 
-	    var numGuests = model.getNumberOfGuests();
+	    numGuests = model.getNumberOfGuests();
 	  	document.getElementById("guests").innerHTML = numGuests;
+
+	  	//totalCost = model.getTotalMenuPrice();
+  		//document.getElementById("total_cost").innerHTML = totalCost;
+
+  		populateMenuView();
 	}
 
 	model.addObserver(this.update);
