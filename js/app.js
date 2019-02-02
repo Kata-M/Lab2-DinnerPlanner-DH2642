@@ -20,7 +20,11 @@ $(function() {
 
 	var dishOverviewViewContainer = $("#dishOverviewView");
 	var dishOverviewView = new DishOverviewView(dishOverviewViewContainer,model);
-	var dishOverviewViewController = new DishOverviewViewController(dishOverviewViewContainer,model,this);
+	var dishOverviewViewController = new DishOverviewViewController(dishOverviewView,model,this);
+
+	var dishPrintoutViewContainer = $("#dishPrintoutView");
+	var dishPrintoutView = new DishPrintoutView(dishPrintoutViewContainer,model);
+	var dishPrintoutViewController = new DishPrintoutViewController(dishPrintoutView,model,this);
 
 
 	var hideAllViews = function(){
@@ -29,6 +33,10 @@ $(function() {
 		$("#dishSearchView").hide();
 		$("#dishOverviewView").hide();
 		$("#findDishView").hide();
+		$("#dishPrintoutView").hide();
+		$("#dishDetailsView").hide();
+
+
 	}
 	
 	this.showSelectDishScreen = function(){
@@ -46,6 +54,11 @@ $(function() {
   		hideAllViews();
   		$("#dishDetailsView").show();
 
+  	}
+
+  	this.showdisPrintoutView = function(){
+  		hideAllViews();
+  		$("#dishPrintoutView").show();
   	}
 
 

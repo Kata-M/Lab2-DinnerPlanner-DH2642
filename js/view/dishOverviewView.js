@@ -1,8 +1,10 @@
 var DishOverviewView = function (dishOverviewContainer, model) {
 	
 	//needed buttons
-	//this.editDinner = dishOverviewContainer.find("#editDinner");
-	//this.printRecipe = dishOverviewContainer.find("#printRecipe");
+	this.editDinner = dishOverviewContainer.find("#editDinner");
+	this.printRecipe = dishOverviewContainer.find("#printRecipe");
+	console.log(editDinner);
+	console.log(printRecipe);
 
 	var showAllDishes = dishOverviewContainer.find("#showAllDishes");
 	var allDishes = model.getFullMenu();
