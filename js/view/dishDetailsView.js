@@ -19,6 +19,7 @@ var DishDetailsView = function (dishDetailsContainer, model) {
 	//for testing
 	var numGuests = model.getNumberOfGuests();
 
+	this.backToSearch = dishDetailsContainer.find("#backToSearch");
 	/**
 	 * Here we use @var {jQuery object} fetchIngredients that is a reference to <span>
 	 * in our view to dynamically set it's value to "Hello World".

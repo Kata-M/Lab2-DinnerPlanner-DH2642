@@ -16,7 +16,7 @@ $(function() {
 
 	var dishDetailsContainer = $("#dishDetailsView");
 	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
-	var dishDetailsViewController = new DishDetailsViewController(dishDetailsContainer,model,this);
+	var dishDetailsViewController = new DishDetailsViewController(dishDetailsView,model,this);
 
 	var dishOverviewViewContainer = $("#dishOverviewView");
 	var dishOverviewView = new DishOverviewView(dishOverviewViewContainer,model);
@@ -52,6 +52,7 @@ $(function() {
 
   	this.showDishDetails = function(){
   		hideAllViews();
+  		$("#sidebarView").show();
   		$("#dishDetailsView").show();
 
   	}
