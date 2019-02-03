@@ -33,7 +33,7 @@ var SidebarView = function (sidebarContainer, model) {
 	 * in some other view gives the same ID to another element.
 	 * 
 	 */
-	var numberOfGuests = sidebarContainer.find("#numberOfGuests");
+	//var numberOfGuests = sidebarContainer.find("#numberOfGuests");
 
 	/**
 	 * When we want references to some view elements to be available from outside of view, we 
@@ -45,8 +45,8 @@ var SidebarView = function (sidebarContainer, model) {
 	 * this button and do something with it (see Lab 2).
 	 * 
 	 */
-	this.plusButton = sidebarContainer.find("#plusGuest");
-	this.minusButton = sidebarContainer.find("#minusGuest");
+	//this.plusButton = sidebarContainer.find("#plusGuest");
+	//this.minusButton = sidebarContainer.find("#minusGuest");
 	
 	/**
 	 * Here we use @var {jQuery object} numberOfGuests that is a reference to <span>
@@ -56,9 +56,8 @@ var SidebarView = function (sidebarContainer, model) {
 	 //for testing
 
 	var numGuests = model.getNumberOfGuests();
-	numberOfGuests.append($("<p> Number of guests"+ numGuests +"</p>"));
+	document.getElementById("numberOfGuests-2").innerHTML = '<p>Number of Guests : '+numGuests+'</p>'
 	console.log(numGuests);
-	document.getElementById("numberOfGuests").innerHTML = numGuests;
 	
 
 
@@ -121,5 +120,16 @@ var SidebarView = function (sidebarContainer, model) {
 	dishTable.append($("<tr id='totalPrice'></tr>"));
 	var totalPriceRow = dishTable.find("#totalPrice");
 	totalPriceRow.append($("<td style=' font-weight: bold '> Total Price "+totalPrice+"</td>"));
+
+	//initialising update
+	this.update=function(model){
+
+		numGuests = model.getNumberOfGuests();
+		document.getElementById("numberOfGuests-2").innerHTML = '<p>Number of Guests : '+numGuests+'</p>'
+	}
+	model.addObserver(this.update);
+
+	this.sidebarView = sidebarContainer.find("#dishDetailsView");
+	this.confirmDinner = sidebarContainer.find("#confirmDinner");
 	
 }

@@ -1,11 +1,11 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
  
- 	console.log("Hello Javascript KATA");
+ 	console.log("Hello Javascript LAB2");
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	var numberOfGuests = 2; //type int
+	var numberOfGuests = 1; //type int
 	var menu = []; //type array/queue
 	var allTypes = [];
 
@@ -320,6 +320,9 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
+		if(type=="all"){
+			return found;
+		}
 	  	return dish.type == type && found;
 	  });	
 	}
@@ -346,21 +349,51 @@ var DinnerModel = function() {
 		}
 	}
 
-	//Observer implementation
-	this._observers = [];
+	var currentDish;
+	this.setCurrentDish = function (id) {
+		for(key in dishes){
+			  if(dishes[key].id == id) {
+				currentDish = dishes[key]; 
+				this.notifyObservers();
+			  }
+		  }
+	  }
 
-	this.addObserver = function(observer) 
-	{
-		this._observers.push(observer);
-	}
+	this.getCurrentDish = function () {
+				return currentDish;
+	  }
 
-	this.notifyObservers = function(arg)
-	{
-		for(var i=0; i<this._observers.length; i++) 
-		{
-			this._observers[i].update(arg);
-		}	
-	}
+	//Below Not working
+	// this._observers = [];
+
+	// this.addObserver = function(observer) 
+	// {
+	// 	this._observers.push(observer);
+	// }
+
+	// this.notifyObservers = function(arg)
+	// {
+	// 	for(var i=0; i<this._observers.length; i++) 
+	// 	{
+	// 		this._observers[i].update(arg);
+	// 	}	
+	// }
+
+    // this.removeObserver=function(observer){  /* remove observer from array */}
+	// //OBSERVER STUFF <-----
+
+	var observers=[];
+    this.addObserver=function(observer){ observers.push(observer); }
+   
+    this.notifyObservers=function(){ 
+        for(var i=0; i<observers.length; i++)
+             observers[i](this); // we assume that observers[i] is a function, so we call it like observers[i](parameters)
+    }
+
+    this.removeObserver=function(observer){  /* remove observer from array */}
+	//OBSERVER STUFF <-----
+
+
 
 
 
@@ -375,7 +408,7 @@ var DinnerModel = function() {
 	var dishes = [{
 		'id':1,
 		'name':'French toast',
-		'type':'test',
+		'type':'starter',
 		'image':'toast.jpg',
 		'description':"In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
 		'ingredients':[{ 
@@ -409,7 +442,7 @@ var DinnerModel = function() {
 		'name':'Sourdough Starter',
 		'type':'starter',
 		'image':'sourdough.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it... Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'active dry yeast',
 			'quantity':0.5,
@@ -431,7 +464,7 @@ var DinnerModel = function() {
 		'name':'Baked Brie with Peaches',
 		'type':'starter',
 		'image':'bakedbrie.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it...Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'round Brie cheese',
 			'quantity':10,
@@ -515,7 +548,7 @@ var DinnerModel = function() {
 		'name':'MD 2',
 		'type':'main dish',
 		'image':'bakedbrie.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it... Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ingredient 1',
 			'quantity':1,
@@ -537,7 +570,7 @@ var DinnerModel = function() {
 		'name':'MD 3',
 		'type':'main dish',
 		'image':'meatballs.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it... Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ingredient 1',
 			'quantity':2,
@@ -559,7 +592,7 @@ var DinnerModel = function() {
 		'name':'MD 4',
 		'type':'main dish',
 		'image':'meatballs.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it... Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ingredient 1',
 			'quantity':1,
@@ -581,7 +614,7 @@ var DinnerModel = function() {
 		'name':'Chocolat Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it...Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ice cream',
 			'quantity':100,
@@ -593,7 +626,7 @@ var DinnerModel = function() {
 		'name':'Vanilla Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it...Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ice cream',
 			'quantity':100,
@@ -605,7 +638,7 @@ var DinnerModel = function() {
 		'name':'Strawberry',
 		'type':'dessert',
 		'image':'icecream.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'description':"Here is how you make it...Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 		'ingredients':[{ 
 			'name':'ice cream',
 			'quantity':100,

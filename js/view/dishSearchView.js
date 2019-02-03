@@ -12,8 +12,12 @@
  * @param {jQuery object} container - references the HTML parent element that contains the view.
  * @param {Object} model - the reference to the Dinner Model
  */ 
-var DishSearchView = function (dishSearchContainer, model) {
+var DishSearchView = function (dishSearchContainer, model, app) {
 	
+
+	// Set the public elements that will be accessible from the controller
+	this.container = dishSearchContainer;
+
 	/**
 	 * We use the @method find() on @var {jQuery object} container to look for various elements 
 	 * inside the view in orther to use them later on. For instance:
@@ -45,22 +49,9 @@ var DishSearchView = function (dishSearchContainer, model) {
 	 * this button and do something with it (see Lab 2).
 	 * 
 	 */
-	this.plusButton = dishSearchContainer.find("#plusGuest");
-	this.minusButton = dishSearchContainer.find("#minusGuest");
+	//this.plusButton = dishSearchContainer.find("#plusGuest");
+	//this.minusButton = dishSearchContainer.find("#minusGuest");
 	
-	/**
-	 * Here we use @var {jQuery object} numberOfGuests that is a reference to <span>
-	 * in our view to dynamically set it's value to "Hello World".
-	 */
-
-	 //for testing
-
-	var numGuests = model.getNumberOfGuests();
-	numberOfGuests.append($("<p> Number of guests"+ numGuests +"</p>"));
-	console.log(numGuests);
-	document.getElementById("numberOfGuests").innerHTML = numGuests;
-	
-
 
 	/*
 	Total Price 
@@ -80,6 +71,7 @@ var DishSearchView = function (dishSearchContainer, model) {
 	/*
 	 * Search Types
 	*/
+	this.searchType = dishSearchContainer.find("#searchType");
 	
 	var selectType = dishSearchContainer.find("#selectType");
 	var types = model.getAllTypes();
@@ -92,57 +84,96 @@ var DishSearchView = function (dishSearchContainer, model) {
 	// 	});
 
 	//document.getElementById("selectType").innerHTML += '<select>'
+	document.getElementById("selectType").innerHTML += '<option value= "all"> all </option>'
 	types.forEach(function(type){
 		document.getElementById("selectType").innerHTML += '<option value="'+type+'">'+ type +'</option>'	
 	});
 	//document.getElementById("selectType").innerHTML += '</select>'
 	
-	
-
 	/*
 	* Add dish for loop to display all dishes
+	*/	
+	var showDishes = dishSearchContainer.find("#showDishes");
+	var dishCost = 0;
+
+	 	var allDishes = model.getAllDishes("all"); 
+		
+		document.getElementById("showDishes").innerHTML = '<div class="container">'+'<div class="row" style="margin-top:30px">'
+		allDishes.forEach(function(dish){
+			
+			dishCost = model.getDishCost(dish);
+			
+			document.getElementById("showDishes").innerHTML += 
+			'<div id="'+dish.id+'" class="col-sm-3 dishItem" style="padding-bottom:10px">'+
+			'<div class="col-item">'+'<div class="photo">'+
+			'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+
+			'</div>'+'<div class="info">'+'<div class="row">'+'<div class="price col-md-12">'+
+			'<h5>'+dish.name+'</h5>'+'<br/>'+'</div>'+'</div>'+'<div class="separator clear-left">'+
+			'<i class="fa fa-list"></i><h5 class="price-text-color">$'+dishCost+'</h5>'+'</div>'+
+			'<div class="clearfix">'+'</div>'+'</div>'+'</div>'+'</div>'		
+		});
+		document.getElementById("showDishes").innerHTML += '</div>'+'</div>'
+
+
+	/*
+	* function called from controller to load dishes
 	*/
-	var loadDishes = function(){
+	this.loadDishes = function(){
 
 		var showDishes = dishSearchContainer.find("#showDishes");
-		var totalCost = model.getTotalMenuPrice();
 		var dishCost = 0;
+		this.dishItems = [];
 
 		var selectedType = document.getElementById("selectType").value;
 	 	var allDishes = model.getAllDishes(selectedType);
 	 	console.log(selectedType);
 		
-		document.getElementById("showDishes").innerHTML += '<div class="container">'+'<div class="row" style="margin-top:30px">'
+		document.getElementById("showDishes").innerHTML = '<div class="container">'+'<div class="row" style="margin-top:30px">'
 		allDishes.forEach(function(dish){
 			
 			dishCost = model.getDishCost(dish);
 			
-			document.getElementById("showDishes").innerHTML += '<div class="col-sm-3" style="padding-bottom:10px">'+'<div class="col-item">'+'<div class="photo">'+'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+'</div>'+'<div class="info">'+'<div class="row">'+'<div class="price col-md-12">'+'<h5>'+dish.name+'</h5>'+'<br/>'+'</div>'+'</div>'+'<div class="separator clear-left">'+'<i class="fa fa-list"></i><h5 class="price-text-color">$'+dishCost+'</h5>'+'</div>'+'<div class="clearfix">'+'</div>'+'</div>'+'</div>'+'</div>'		
+			var item = document.getElementById("showDishes").innerHTML += '<div id="'+dish.id+'" class="col-sm-3 dishItem" style="padding-bottom:10px">'+'<div class="col-item">'+'<div class="photo">'+'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+'</div>'+'<div class="info">'+'<div class="row">'+'<div class="price col-md-12">'+'<h5>'+dish.name+'</h5>'+'<br/>'+'</div>'+'</div>'+'<div class="separator clear-left">'+'<i class="fa fa-list"></i><h5 class="price-text-color">$'+dishCost+'</h5>'+'</div>'+'<div class="clearfix">'+'</div>'+'</div>'+'</div>'+'</div>'		
+
+			//new DishItemController(item, dish, app);
 		});
 		document.getElementById("showDishes").innerHTML += '</div>'+'</div>'
-		document.getElementById("showDishes").innerHTML += '<div class="col-sm-12"><h3>Total Cost : $'+totalCost+'</h3></div>'
-	}
 
-	// The observer update function, triggered by the model when there are changes
-	this.update = function() {
-		loadDishes();
-
-		 // redraw just the portion affected by the changeDetails
-    	 // or remove all graphics in the view, read the whole model and redraw 
 	}
 
 	
+
+	// The observer update function, triggered by the model when there are changes
+	// this.update = function(args) {
+
+	// 	if(args == 'numberOfGuest'){
+			
+	// 		numberOfGuest = args[0];
+	// 	}
+	// 	if(args == 'menu'){
+						
+	// 		// update menu
+	// 	}
+		
+	// 	loadDishes();
+
+	// 	 // redraw just the portion affected by the changeDetails
+    // 	 // or remove all graphics in the view, read the whole model and redraw 
+	// }
+
+    //this.setDishes = function() {
+	// 	loadDishes();
+	// 	//container.find(oldType).removeClass("active");
+	// 	//container.find(selectedType).addClass("active");
+	// }
+
 	//model.addObserver(this);
 
-	model.addObserver(this.update);
+	//model.addObserver(this.update);
 
-	// Finally we want to load all the shapes on initialization
-	loadDishes();
+	//load all the dishes on initialization
+	//loadDishes();
 
-
-	// view.dishSearchContainer.find(".btn").click( function(e) {
-	// 	view.setActiveShape(this);
-	// 	activeShape = this.getAttribute("value");
-	// });
+	this.showDishes = dishSearchContainer.find("#showDishes");
 
 }

@@ -12,7 +12,7 @@ var DishSearchController = function(view, model, app) {
     //     //var type = document.getElementById("selectType").value;  
     //     //model.getAllDishes(view.selectedType);
     //     //console.log(type);
-    //     //view.showDishesbyType();
+    //     view.showDishesbyType();
     //     evt.preventDefault(); 
     // }
 
@@ -20,9 +20,36 @@ var DishSearchController = function(view, model, app) {
     // searchType.addEventListener("click", listener , false);
 
 
-    view.container.find("searchType").click( function(e) {
-		view.loadDishes();
-		//activeType = this.getAttribute("value");
-	});
+    view.searchType.click( function(evt) {
+        
+        evt.preventDefault();
+        view.loadDishes();
+        //activeType = this.getAttribute("value");
+       
+    });
+
+    view.showDishes.on('click', '.dishItem', function(){ 
+        
+       var id = $(this).attr('id'); 
+       //activeType = this.getAttribute("value");
+       app.showDishDetails(id);
+     
+    });
+
+
+    //view.showDishes.on('click', '.dishItem', function(){ 
+    //        var id = $(this).attr('id'); 
+    //       //app.showDishDetails(id);
+    //       app.showDishDetails(id);
+    //  });
+    
+    // view.dishItem.click( function() {
+
+    //     app.showDishDetails();
+    // });
+  
+    // view.dishItem.click( function(){
+    //   app.showDishDetails();
+    // });
     
 }

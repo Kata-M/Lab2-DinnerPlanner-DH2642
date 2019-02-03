@@ -34,13 +34,10 @@ $(function() {
 	var sidebarView = new SidebarView(sidebarContainer,model);
 
 	// And create the instance of dishSearchView
-	var dishSearchView = new DishSearchView(dishSearchContainer,model);
+	var dishSearchView = new DishSearchView(dishSearchContainer,model, this);
 
 	// And create the instance of dishesItemView
 	//var dishItemView = new DishesItemView(dishItemContainer,model);
-
-	// And create the instance of dishDetailsView
-	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
 
 	// And create the instance of dishOverviewView
 	var dishOverviewView = new DishOverviewView(dishOverviewContainer,model);
@@ -52,10 +49,10 @@ $(function() {
 	var welcomeController = new WelcomeController($("#welcomeView"), model, this);
 
 	// Instantiate the controller and pass it the view and model
-	var dishSearchController = new DishSearchController(dishSearchView, model, this);
+	var sidebarController = new SidebarController(sidebarView, model, this);
 
 	// Instantiate the controller and pass it the view and model
-	var dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+	var dishSearchController = new DishSearchController(dishSearchView, model, this);
 
 	// Instantiate the controller and pass it the view and model
 	var dishOverviewController = new DishOverviewController(dishOverviewView, model, this);
@@ -108,16 +105,26 @@ $(function() {
 		//show dish details
 		var hideViewsDishDetails = function(){
 			$('#welcomeView').hide();
-			$('#sidebarView').hide();
 			$('#dishSearchView').hide();
 			$('#dishOverviewView').hide();
 			$('#dishPrintoutView').hide();
 			//...
 		}
 	
-		this.showDishDetails = function(){
+		this.showDishDetails = function(id){
+
 			hideViewsDishDetails();
+			
+			// And create the instance of dishDetailsView
+			var dishDetailsView = new DishDetailsView(dishDetailsContainer,model,id);
+
+			// Instantiate the controller and pass it the view and model
+			var dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
+
+			$('#sidebarView').show();
 			$('#dishDetailsView').show();
+
+			//model.setCurrentDish(id);
 		}
 
 		//show dish overview
