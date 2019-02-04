@@ -3,7 +3,8 @@ var FindDishView = function(findDishContainer,model){
 	
 	this.searchButton = findDishContainer.find("#search");
 	
-	
+	var menu = model.getFullMenu();
+
 
 
   	//UPDATE 	FUNCTION 	FOR 	THIS 	VIEW
@@ -88,7 +89,7 @@ var FindDishView = function(findDishContainer,model){
 	
 	//the value in filter field
 	var filterValue = document.getElementById("selectType").value;
-	console.log("filter value : ",filterValue);
+
 
 	var filteredDishes = model.getAllDishes(filterValue);
 
@@ -97,7 +98,6 @@ var FindDishView = function(findDishContainer,model){
 	//});
 
 	/** RE-POPULATE THE THUMPNAILS **/
-
 
 
 	//ATTACH THE OBSERVER TO THE MODEL
