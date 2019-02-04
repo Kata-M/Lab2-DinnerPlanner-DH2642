@@ -73,6 +73,7 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 		loadIngredientsTable();
 	}
 
+  
 	model.addObserver(this.update);
 
 }

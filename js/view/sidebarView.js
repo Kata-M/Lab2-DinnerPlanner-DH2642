@@ -16,13 +16,7 @@ var SidebarView = function(sidebarContainer,model){
   	//-----
   	var populateMenuView = function(){
 		 	var allMenu = model.getFullMenu();
-			
-            /*
-            document.getElementById("menu").innerHTML = '<tr id="menuItem'+"test"+'">'+
-					'<th scope="row" id="1dish">'+"test"+'</th>' +
-					'<td id="1price"><span id="1dish_price">'+ "test" + ' kr </span></td>' +
-				'</tr>'
-			*/
+
 			document.getElementById("menu").innerHTML = 
 			'<thead>'+ 
                       '<tr>' +  
@@ -75,6 +69,7 @@ var SidebarView = function(sidebarContainer,model){
 
   		populateMenuView();
 	}
+
 
 	model.addObserver(this.update);
 }
