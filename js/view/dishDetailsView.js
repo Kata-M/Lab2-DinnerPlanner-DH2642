@@ -1,4 +1,3 @@
-
 var DishDetailsView = function (dishDetailsContainer, model, id) {
 
 	

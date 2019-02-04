@@ -64,21 +64,6 @@ var DinnerModel = function() {
 
 	}
 
-
-
-	//Returns all ingredients for all the dishes on the menu.
-	/*this.getAllIngredients = function() {
-		//DONE Lab 1		
-		var returnIngredients = new Array();
-
-		for(key in menu){
-			//console.log("ingredients for item [", key, "]  ", dishes[key].ingredients);
-			returnIngredients[key] = menu[key].ingredients;
-
-		}
-		//console.log(" returnIngredients : ", returnIngredients)
-    	return returnIngredients;
-	}*/
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO Lab 1
@@ -145,17 +130,6 @@ var DinnerModel = function() {
 		});
 		return totalPrice*this.getNumberOfGuests();
 		
-		/*var totalPrice = 0;
-		dishes.forEach(function(dish)
-		{
-		
-			dish.ingredients.forEach(function(ingredient) {
-					 totalPrice += ingredient.price;
-			});
-		});
-		return totalPrice*this.getNumberOfGuests();
-		//return 70;
-		*/
 	}
 		
 
