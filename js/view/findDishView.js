@@ -15,13 +15,12 @@ var FindDishView = function(findDishContainer,model){
 
 	/* search types and populate the screen dynamicly */
 	this.searchType = findDishContainer.find("#selectType");
+	this.searchInput = findDishContainer.find("#searchInput");
 	var types = model.getAllTypes();
 	document.getElementById("selectType").innerHTML += '<option value= "all"> all </option>'	
 	types.forEach(function(type){
 		document.getElementById("selectType").innerHTML += '<option value="'+type+'">'+ type +'</option>'	
 	});
-
-	//stuff from sindhu
 
 	//var showDishes = dishSearchContainer.find("#filtered");
 		var dishCost = 0;
@@ -37,6 +36,7 @@ var FindDishView = function(findDishContainer,model){
 			dishCost = model.getDishCost(dish);
 			
 			document.getElementById("filtered").innerHTML += 
+			
 			'<div id="'+dish.id+'"class="col-sm-3 dishItem" style="padding-bottom:10px">'+
 			'<div class="col-item">'+'<div class="photo">'+
 			'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+
@@ -54,7 +54,8 @@ var FindDishView = function(findDishContainer,model){
 		var dishCost = 0;
 
 		var filterValue = document.getElementById("selectType").value;
-	 	var allDishes = model.getAllDishes(filterValue);
+		var searchValue = document.getElementById("searchInput").value;
+	 	var allDishes = model.getAllDishes(filterValue,searchValue);
 	 	
 		
 		document.getElementById("filtered").innerHTML = '<div class="container">'+'<div class="row" style="margin-top:30px">'
