@@ -24,13 +24,28 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 
 		var dish = model.getDish(id);
 
-		document.getElementById("dishDetails").innerHTML = '<h2 style="text-align: left">'+dish.name+'</h2><br/>'+'<img src="images\\'+dish.image+'" alt="food" style="width:50%; margin-bottom:20px"/>'+'<p>'+dish.description+'</p>'+'<button id= "backToSearch" class="btn center-block buttonclr">Back to search</button>'+'<br/><br/>'+'<h2 style="text-align: left">PREPARATION</h2>'+'<p>'+dish.description+'</p>'
+		document.getElementById("dishDetails").innerHTML = '<h2 style="text-align: left">'+dish.name+'</h2><br/>'+'<img src="images\\'+dish.image+'" alt="food" style="width:50%; margin-bottom:20px"/>'+'<p>'+dish.description+'</p>'+
+		//'<button id= "backToSearch" class="btn center-block buttonclr">Back to search</button>'+
+		'<br/><br/>'+
+		'<h2 style="text-align: left">PREPARATION</h2>'+'<p>'+dish.description+'</p>'
 		
 
 		var ingredients = model.getIngredientsforDish(id);
 		console.log(ingredients);
 
-		fetchIngredients.append($("<table id='ingredientTable' class='table table-sm'></table>"));
+
+
+
+		//var parentTable = document.getElementById("fetchIngredients");
+		//var childTable = document.getElementById("ingredientTable");
+		//parentTable.removeChild(childTable);
+
+
+
+
+		//fetchIngredients.append($("<table id='ingredientTable' class='table table-sm'></table>"));
+		document.getElementById("fetchIngredients").innerHTML = '<table id="ingredientTable" class="table table-sm">'
+
 		var ingredientTable = fetchIngredients.find("#ingredientTable");
 		
 		ingredientTable.append($("<tr id='totalGuests'></tr>"));
@@ -54,6 +69,8 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 		ingredientTable.append($("<tr id='totalPrice'></tr>"));
 		var totalPriceRow = ingredientTable.find("#totalPrice");
 		totalPriceRow.append($("<td style=' font-weight: bold '> Total Price "+totalPrice+"</td>"));
+
+		document.getElementById("fetchIngredients").innerHTML += '</table>'
 	}	
 	//model.addObserver(this.update);
 

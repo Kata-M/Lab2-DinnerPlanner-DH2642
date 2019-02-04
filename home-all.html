@@ -7,10 +7,9 @@
     <title>Dinner planner</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="home-all.css">
-
+	 
 	</head>
   <body>
 
@@ -71,7 +70,7 @@
         
              <!-- <form ALIGN=LEFT class="example" action="home-all.html"> -->
               <form ALIGN=LEFT class="example" action="app.showFindDishView"> 
-                      <input type="text" placeholder="Enter key words" name="search">
+                      <input type="text" id="searchInput" placeholder="Enter key words" name="search">
   
                        <select id = "selectType">
                        </select>
@@ -81,36 +80,12 @@
               <br />
               <hr>
         </div>
-
-
-        <!-- end of side bar --> 
-
-
-        
-          <div id ="findDishView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">
-        
-            <h3 align="left"> FIND A DISH </h3>
-            <br />
-               <div class="row">
-              
-                   <!-- <form ALIGN=LEFT class="example" action="home-all.html"> -->
-                    <form ALIGN=LEFT class="example" action="app.showFindDishView"> 
-                             <input  type="text" id="searchInput" placeholder="Enter key words" name="search">
-                             <!-- <input type="text" id="myInput" onkeyup="" placeholder="Search.."> -->
-                             <select id = "selectType">
-                             </select>
-                 
-                            <button id="search" class="button" type="submit"> Search </button>                            
-                    </form>        
-                    <br />
-                    <hr>
-              </div>
-          <div class="row" id="filtered">     
-          </div> 
-      </div>
-
+  
+        <div class="row" id="filtered">     
+        </div> 
+    </div>
+  </div>
    
-
    
       
 
@@ -122,11 +97,13 @@
           <!-- Center -->
           <div  class="col-xs-12 col-sm-6 col-md-6 col-style">
                                           <span id="dishDetails"></span>
+                                           <button id= "backToSearch" class="btn center-block buttonclr">Back to search</button>
           </div>
           <!-- Right ingredients table -->
           <div class="col-xs-12 col-sm-6 col-md-6 col-style" style="background-color: #FFE59A;">
               <div id="parentTable">  
                 <span id="fetchIngredients"></span>
+
               </div>
               <div>
                   <button id="addToMenu" class="btn center-block buttonclr">Add to Menu</button>
@@ -252,7 +229,6 @@
     <script src="js/controller/dishPrintoutViewController.js"></script>  
     <script src="js/view/dishDetailsView.js"></script>
     <script src="js/controller/dishDetailsViewController.js"></script>
-
 
       
       
