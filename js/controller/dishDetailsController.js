@@ -1,8 +1,8 @@
 // dishDetailsViewController.js
-var DishDetailsController = function(view, model, app) {
+var DishDetailsController = function(view, model, id) {
     
-    view.addToMenu.click(function(){
-        app.showDishOverview();
+    view.addToMenu.click(function(id){
+        model.addDishToMenu(id);
     });
 
     //selectItem

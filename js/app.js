@@ -84,9 +84,8 @@ $(function() {
 		*/
 		
 		// ...
-
 		
-		//show select dish
+		//hide other than select dish
 		var hideViewsSelectDish = function(){
 			$('#welcomeView').hide();
 			$('#dishDetailsView').hide();
@@ -102,7 +101,7 @@ $(function() {
 			
 		}				
 		
-		//show dish details
+		//hide other than dish details
 		var hideViewsDishDetails = function(){
 			$('#welcomeView').hide();
 			$('#dishSearchView').hide();
@@ -114,20 +113,19 @@ $(function() {
 		this.showDishDetails = function(id){
 
 			hideViewsDishDetails();
+			$('#sidebarView').show();
+			$('#dishDetailsView').show();
 			
 			// And create the instance of dishDetailsView
 			var dishDetailsView = new DishDetailsView(dishDetailsContainer,model,id);
 
 			// Instantiate the controller and pass it the view and model
-			var dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
-
-			$('#sidebarView').show();
-			$('#dishDetailsView').show();
+			var dishDetailsController = new DishDetailsController(dishDetailsView, model, id);
 
 			//model.setCurrentDish(id);
 		}
 
-		//show dish overview
+		//hide other than dish overview
 		var hideViewsDishOverview = function(){
 			$('#welcomeView').hide();
 			$('#sidebarView').hide();
@@ -143,7 +141,7 @@ $(function() {
 			
 		}
 
-		//show dish print out
+		//hide other than dish print out
 		var hideViewsDishPrintout = function(){
 			$('#welcomeView').hide();
 			$('#sidebarView').hide();
