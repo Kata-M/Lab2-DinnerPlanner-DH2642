@@ -13,20 +13,6 @@ var FindDishView = function(findDishContainer,model){
 	
 	}
 
-	/*
-	 * Search Types
-	*/
-	/*
-	var types = model.getAllTypes();
-	//totalPrice.append($(total));
-	console.log("types : ",types);
-	var n = 0;
-	types.forEach(function(type)
-		{
-			document.getElementById("type"+n).innerHTML = type;
-			n++;
-		});
-	*/
 	/* search types and populate the screen dynamicly */
 	this.searchType = findDishContainer.find("#selectType");
 	var types = model.getAllTypes();
@@ -51,7 +37,7 @@ var FindDishView = function(findDishContainer,model){
 			dishCost = model.getDishCost(dish);
 			
 			document.getElementById("filtered").innerHTML += 
-			'<div id="dishItem" class="col-sm-3 " style="padding-bottom:10px">'+
+			'<div id="'+dish.id+'"class="col-sm-3 dishItem" style="padding-bottom:10px">'+
 			'<div class="col-item">'+'<div class="photo">'+
 			'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+
 			'</div>'+'<div class="info">'+'<div class="row">'+'<div class="price col-md-12">'+
@@ -64,13 +50,12 @@ var FindDishView = function(findDishContainer,model){
 
 
 	this.showThumbnails = function(){
-		//$("#findDishView").empty();
+
 		var dishCost = 0;
 
 		var filterValue = document.getElementById("selectType").value;
-		//var filterValue = "starter";
 	 	var allDishes = model.getAllDishes(filterValue);
-	 	console.log(filterValue);
+	 	
 		
 		document.getElementById("filtered").innerHTML = '<div class="container">'+'<div class="row" style="margin-top:30px">'
 		allDishes.forEach(function(dish){
@@ -78,7 +63,7 @@ var FindDishView = function(findDishContainer,model){
 			dishCost = model.getDishCost(dish);
 			
 			document.getElementById("filtered").innerHTML += 
-			'<div id="dishItem" class="col-sm-3" style="padding-bottom:10px">'+
+			'<div id="'+dish.id+ '"class="col-sm-3 dishItem" style="padding-bottom:10px">'+
 			'<div class="col-item">'+'<div class="photo">'+
 			'<img src="images/'+dish.image+'" class="img-responsive" alt="a" />'+
 			'</div>'+'<div class="info">'+'<div class="row">'+'<div class="price col-md-12">'+

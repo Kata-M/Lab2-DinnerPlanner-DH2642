@@ -69,6 +69,7 @@ var SidebarView = function(sidebarContainer,model){
 	    numGuests = model.getNumberOfGuests();
 	  	document.getElementById("guests").innerHTML = numGuests;
 
+
 	  	//totalCost = model.getTotalMenuPrice();
   		//document.getElementById("total_cost").innerHTML = totalCost;
 

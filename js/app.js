@@ -15,8 +15,8 @@ $(function() {
 	var findDishViewController = new FindDishViewController(findDishView,model,this);
 
 	var dishDetailsContainer = $("#dishDetailsView");
-	var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
-	var dishDetailsViewController = new DishDetailsViewController(dishDetailsView,model,this);
+	//var dishDetailsView = new DishDetailsView(dishDetailsContainer,model);
+	//var dishDetailsViewController = new DishDetailsViewController(dishDetailsView,model,this);
 
 	var dishOverviewViewContainer = $("#dishOverviewView");
 	var dishOverviewView = new DishOverviewView(dishOverviewViewContainer,model);
@@ -50,10 +50,16 @@ $(function() {
   		$("#dishOverviewView").show();
   	}
 
-  	this.showDishDetails = function(){
+  	this.showDishDetails = function(id){
   		hideAllViews();
   		$("#sidebarView").show();
   		$("#dishDetailsView").show();
+
+			// And create the instance of dishDetailsView
+		var dishDetailsView = new DishDetailsView(dishDetailsContainer,model,id);
+
+		// Instantiate the controller and pass it the view and model
+		var dishDetailsViewController = new DishDetailsViewController(dishDetailsView, model, this);
 
   	}
 

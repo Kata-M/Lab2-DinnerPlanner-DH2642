@@ -5,13 +5,18 @@ var FindDishViewController = function(view,model,app){
 		view.showThumbnails();
 	});
 
-	view.filterButton.click(function(){
+	/*view.filterButton.click(function(){
 		alert("FILTER ");
-	});
+	});*/
 
-	view.dishItem.click( function(){
-		app.showDishDetails();
-	});
+
+    view.filterButton.on('click', '.dishItem', function(){ 
+        
+       var id = $(this).attr('id'); 
+       //activeType = this.getAttribute("value");
+       app.showDishDetails(id);
+     
+    });
 
 
 }

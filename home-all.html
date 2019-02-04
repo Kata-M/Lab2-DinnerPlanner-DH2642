@@ -247,34 +247,26 @@
       
 
     <!-- dish details -->
-    <div class="container" id="dishDetailsView" style="display:none">
-    <!--<div id="dishDetailsView" class="col-xs-12 col-sm-8 col-md-8" style="display:none">-->
-
-				<!--<div class="row">-->
-		
-					<!-- Center -->
-					<div 	class="col-xs-12 col-sm-4 col-md-4">
-							<h2 style="text-align: left">FRENCH TOAST</h2>
-							<br/>
-							<img src="images\toast.jpg" alt="food" style="width:50%; margin-bottom:20px">
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-							<button class="btn center-block buttonclr" id="backToSearch">Back to search</button>
-							<br/>
-							<br/>
-							<h2 style="text-align: left">PREPARATION</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-					</div>
-					<!-- Right ingredients table -->
-					<div class="col-xs-12 col-sm-4 col-md-4" style="background-color: #FFE59A;">
-							<div>	
-								<span id="fetchIngredients"></span>
-							</div>
-							<div>
-									<button id="addToMenu" class="btn center-block buttonclr">Add to Menu</button>
-							</div>	
-					</div>
-		</div>	
+    <div id="dishDetailsView" class="container-float" style="display:none">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-8 row">
+                              <!-- Left Panel -->
+          <!-- Center -->
+          <div  class="col-xs-12 col-sm-6 col-md-6 col-style">
+                                          <span id="dishDetails"></span>
+          </div>
+          <!-- Right ingredients table -->
+          <div class="col-xs-12 col-sm-6 col-md-6 col-style" style="background-color: #FFE59A;">
+              <div id="parentTable">  
+                <span id="fetchIngredients"></span>
+              </div>
+              <div>
+                  <button id="addToMenu" class="btn center-block buttonclr">Add to Menu</button>
+              </div>  
+            </div>
         </div>
+    </div>  
+    </div>
 
 
     <!-- Dish Overview -->
