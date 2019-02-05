@@ -1,35 +1,22 @@
 var DishDetailsView = function (dishDetailsContainer, model, id) {
 
-	
-	this.id = id ; 
-	console.log("id : ", id);
-	//for testing
+	 
 	var numGuests = model.getNumberOfGuests();
-	
 	var dishDetails = dishDetailsContainer.find("#dishDetails");	
+	var fetchIngredients = dishDetailsContainer.find("#fetchIngredients");
+	var ID;	
 
-	/**
-	 * Here we use @var {jQuery object} fetchIngredients that is a reference to <span>
-	 * in our view to dynamically set it's value to "Hello World".
-	 */
-	var fetchIngredients = dishDetailsContainer.find("#fetchIngredients");	
-	//var fetchIngredients = document.getElementById('fetchIngredients');
+	var loadDishDetails = (id) => {
 
-	
-
-	var loadDishDetails =function(){
-
-		//var currentDish = model.getCurrentDish();
-		//var ingredients = model.getIngredientsforDish(currentDish.id);
+		this.id = id ;
+		ID = id;
 
 		var dish = model.getDish(id);
-
 		document.getElementById("dishDetails").innerHTML = '<h2 style="text-align: left">'+dish.name+'</h2><br/>'+'<img src="images\\'+dish.image+'" alt="food" style="width:50%; margin-bottom:20px"/>'+'<p>'+dish.description+'</p>'+
 		//'<button id= "backToSearch" class="btn center-block buttonclr">Back to search</button>'+
 		'<br/><br/>'+
 		'<h2 style="text-align: left">PREPARATION</h2>'+'<p>'+dish.description+'</p>'
 		
-
 		var ingredients = model.getIngredientsforDish(id);
 		console.log(ingredients);
 
@@ -63,25 +50,21 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 		document.getElementById("fetchIngredients").innerHTML += '</table>'
 	}	
 
-	loadDishDetails();
+	//loadDishDetails(id);
+	this.loadDishDetails = loadDishDetails;
 
 	this.backToSearchButton = dishDetailsContainer.find("#backToSearch");
 	this.addToMenuButton = dishDetailsContainer.find("#addToMenu");
 
 	this.update=function(){
-		
-			//if(args == 'numberOfGuests' || args == 'menu' )
-			//{
 				numGuests = model.getNumberOfGuests();
 
 				var parentTable = document.getElementById("fetchIngredients");
 				var childTable = document.getElementById("ingredientTable");
 				parentTable.removeChild(childTable);
 
-				loadDishDetails();
-			//}
+				loadDishDetails(ID);
 	}
-
   
 	model.addObserver(this.update);
 
