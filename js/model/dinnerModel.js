@@ -1,12 +1,10 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
- 	console.log("Hello Javascript KATA");
 	//TODO Lab 1 implement the data structure that will hold number of guest
 	// and selected dishes for the dinner menu
 
-	var numberOfGuests = 3; //type int
-	var menu = []; //type array/queue
+	var numberOfGuests = 1; //type int
+	var menu = [];
 
 	var allTypes = [];
 
@@ -26,14 +24,14 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		//DONE Lab 1
-		console.log("set number of guests to: ", num);
-		numberOfGuests = num;
+		if(num>0){
+			numberOfGuests = num;
+		}
 		this.notifyObservers();
 	}
 	
 	this.getNumberOfGuests = function() {
 		//DONE Lab 1
-		console.log("get number of guests ");
 		return numberOfGuests;
 
 	}
