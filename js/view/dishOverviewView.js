@@ -2,8 +2,6 @@ var DishOverviewView = function (dishOverviewContainer, model) {
 	
 
 	var menu = model.getFullMenu();
-	console.log("print menu", menu  );
-	console.log("Dish overview view", dishOverviewView);
 
 	//needed buttons
 	this.editDinner = dishOverviewContainer.find("#editDinner");

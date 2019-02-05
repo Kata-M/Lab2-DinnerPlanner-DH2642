@@ -17,7 +17,7 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 
 	
 
-	var loadIngredientsTable =function(){
+	var loadDishDetails =function(){
 
 		//var currentDish = model.getCurrentDish();
 		//var ingredients = model.getIngredientsforDish(currentDish.id);
@@ -32,16 +32,6 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 
 		var ingredients = model.getIngredientsforDish(id);
 		console.log(ingredients);
-
-
-
-
-		//var parentTable = document.getElementById("fetchIngredients");
-		//var childTable = document.getElementById("ingredientTable");
-		//parentTable.removeChild(childTable);
-
-
-
 
 		//fetchIngredients.append($("<table id='ingredientTable' class='table table-sm'></table>"));
 		document.getElementById("fetchIngredients").innerHTML = '<table id="ingredientTable" class="table table-sm">'
@@ -72,22 +62,24 @@ var DishDetailsView = function (dishDetailsContainer, model, id) {
 
 		document.getElementById("fetchIngredients").innerHTML += '</table>'
 	}	
-	//model.addObserver(this.update);
 
-	loadIngredientsTable();
+	loadDishDetails();
 
 	this.backToSearchButton = dishDetailsContainer.find("#backToSearch");
 	this.addToMenuButton = dishDetailsContainer.find("#addToMenu");
 
 	this.update=function(){
-
-		numGuests = model.getNumberOfGuests();
 		
-		var parentTable = document.getElementById("fetchIngredients");
-		var childTable = document.getElementById("ingredientTable");
-		parentTable.removeChild(childTable);
+			//if(args == 'numberOfGuests' || args == 'menu' )
+			//{
+				numGuests = model.getNumberOfGuests();
 
-		loadIngredientsTable();
+				var parentTable = document.getElementById("fetchIngredients");
+				var childTable = document.getElementById("ingredientTable");
+				parentTable.removeChild(childTable);
+
+				loadDishDetails();
+			//}
 	}
 
   
