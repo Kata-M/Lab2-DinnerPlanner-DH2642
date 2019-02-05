@@ -15,7 +15,6 @@ var DishPrintoutView = function (dishPrintoutContainer, model) {
 
 		menu.forEach(function(menuItem)
 		{
-			//dishCost = model.getDishCost(menuItem);
 
 			document.getElementById("printOneDish").innerHTML += '<div class="row">'+
 			'<div class="col-sm-3" style="padding-bottom:10px">'+
