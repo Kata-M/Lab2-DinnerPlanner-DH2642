@@ -8,8 +8,7 @@ var FindDishViewController = function(view,model,app){
 
     view.filterButton.on('click', '.dishItem', function(){ 
         
-       var id = $(this).attr('id'); 
-       //activeType = this.getAttribute("value");
+       let id = $(this).attr('id'); 
        app.showDishDetails(id);
      
     });
