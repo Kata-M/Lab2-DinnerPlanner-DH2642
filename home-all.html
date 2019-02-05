@@ -141,71 +141,23 @@
 
      <!-- Dish Printout -->
      <div id="dishPrintoutView" style="display:none">
-        <div class="row" style="height:100px">
-
-        <div class="col-sm-10">
-        <h3 ALIGN=LEFT> &nbsp;&nbsp;&nbsp;&nbsp; My Dinner: 3 People  </h3>
-        </div>
-
-        <div class="col-sm-2" style="text-align:left">
-        <button class="button" id="editDinner2" type="submit" style="margin-top:20px"> Go back and edit dinner </button>
-        </div>  
-
-        </div>
-        <hr>
-
         <div class="row">
-        <div class="col-sm-3" style="margin-left: 20px">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <img src="images/meatballs.jpg" >
-                        </div>
-                        <div class="panel-footer">
-                            <h4> Meat Balls </h4>
-                        </div>
-                    </div>
-
-
-        </div>
-        <div class="col-sm-3">
-        <h1>  MEAT BALLS </h1>
-        <p>  Piqued son turned fat income played end wicket. To do noisy downs round an happy books. </p>
-
-
-        </div>
-        <div class="col-sm-5">
-        <h4>  PREPARATION </h4>
-        <p> Style too </p>
-
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3" style="margin-left: 20px">
-
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="images/toast.jpg" >
-                            </div>
-                            <div class="panel-footer">
-                                <h4> Toast </h4>
-                            </div>
-                        </div>
-
-
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-9" >
+                  <h2 style="padding:10px">My Dinner: <span id="peoplePrintout"></span>  people</h2>
+                  <!--<span id="numberOfGuests"></span>-->
+                </div>
+                <div class="col-sm-3" style="margin-top:20px">
+                  <button class="btn buttonclr" id="editDinner2">Go back and edit dinner</button>
+                </div>  
+              </div>  
             </div>
-            <div class="col-sm-3">
-              <h1>  TOAST </h1>
-              <p> Style too own civil out along. Perfectly offending attempted add arranging age gentleman </p>
-            </div>
-            <div class="col-sm-5">
-                <h4>  PREPARATION </h4>
-                <p> f tell her case has sigh. Moreover is possible he admitted sociable concerns. By in cold no less been sent hard hill.
-                </p>
-            </div>
-      </div>   
-    </div> 
-  </div>
+        </div>
+        <div class="row" id="printOneDish">
+         <!-- Display all dishes in menu -->
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
